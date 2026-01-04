@@ -1,0 +1,18 @@
+{
+  "name": "abhyasa",
+  "version": "0.1.0",
+  "description": "Open-source modular quiz and assessment engine",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+	"build": "node esbuild.config.js && cp -r public/* dist/",
+    "dev": "node esbuild.config.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.27.2"
+  }
+}
