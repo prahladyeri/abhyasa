@@ -34,62 +34,58 @@ async function initData() {
 }
 
 function renderNavbar() {
-  const $nav = $("#navbar-menu");
-  $nav.empty();
+	const $nav = $("#navbar-menu");
+	$nav.empty();
 
-  let html = `
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/" data-link>Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about" data-link>About</a>
-      </li>
-  `;
+	let html = `
+	<ul class="navbar-nav">
+	  <!--li class="nav-item">
+		<a class="nav-link" href="/" data-link><i class="fas fa-home"></i> Home</a>
+	  </li-->
+	`;
 
-  App.topics.forEach(topic => {
-    html += `
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"
-           href="#"
-           role="button"
-           data-bs-toggle="dropdown"
-           aria-expanded="false">
-          ${topic.name}
-        </a>
-        <ul class="dropdown-menu">
-          <!-- Core topic -->
-          <li>
-            <a class="dropdown-item"
-               href="/quiz/${topic.slug}"
-               data-link>
-              ${topic.name} (Core)
-            </a>
-          </li>
-    `;
-    // Non-core subtopics
-    (topic.subtopics || [])
-      .forEach(st => {
-        html += `
-          <li>
-            <a class="dropdown-item"
-               href="/quiz/${topic.slug}/${st.slug}"
-               data-link>
-              ${topic.name} / ${st.name}
-            </a>
-          </li>
-        `;
-      });
+	App.topics.forEach(topic => {
+	html += `
+	  <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle"
+		   href="#"
+		   role="button"
+		   data-bs-toggle="dropdown"
+		   aria-expanded="false"><i class="fas fa-book"></i> 
+		  ${topic.name}
+		</a>
+		<ul class="dropdown-menu">
+		  <!-- Core topic -->
+		  <li>
+			<a class="dropdown-item"
+			   href="/quiz/${topic.slug}"
+			   data-link><i class="fas fa-book"></i> 
+			  ${topic.name} (Core)
+			</a>
+		  </li>
+	`;
+	// Non-core subtopics
+	(topic.subtopics || [])
+	  .forEach(st => {
+		html += `
+		  <li>
+			<a class="dropdown-item"
+			   href="/quiz/${topic.slug}/${st.slug}"
+			   data-link><i class="fas fa-book"></i> 
+			  ${topic.name} / ${st.name}
+			</a>
+		  </li>
+		`;
+	  });
 
-    html += `
-        </ul>
-      </li>
-    `;
-  });
+	html += `
+		</ul>
+	  </li>
+	`;
+	});
 
-  html += `</ul>`;
-
-  $nav.html(html);
+	html += `</ul>`;
+	$nav.html(html);
 }
 
 

@@ -1,28 +1,18 @@
 import esbuild from 'esbuild';
+import fs from 'fs';
+import pkg from './package.json' assert { type: 'json' };
 
-const isWatch = process.argv.includes('--watch');
+// generate build info
+const buildNumber = new Date().toISOString();
+fs.writeFileSync('src/build.js', `
+  export const VERSION = "${pkg.version}";
+  export const BUILD = "${buildNumber}";
+`);
 
 esbuild.build({
   entryPoints: ['src/main.js'],
   bundle: true,
   outfile: 'dist/app.js',
-  sourcemap: true,
-  minify: !isWatch,
+  sourcemap: false,
   target: ['es2017'],
-  loader: {
-    '.js': 'js'
-  }
-}).then(() => {
-  if (isWatch) {
-    console.log('Watching for changes...');
-  }
-}).catch(() => process.exit(1));
-
-if (isWatch) {
-  esbuild.context({
-    entryPoints: ['src/main.js'],
-    bundle: true,
-    outdir: 'dist',
-    sourcemap: true
-  }).then(ctx => ctx.watch());
-}
+});
