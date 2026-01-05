@@ -1,3 +1,5 @@
+import './app.css';
+
 const App = {db: null, topics: []};
 
 import * as home from "./controllers/home.js";

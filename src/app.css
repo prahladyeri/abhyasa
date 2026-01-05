@@ -1,0 +1,23 @@
+/* Typography */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* App content */
+#app h1, #app h2 {
+  font-weight: 600;
+}
+
+#app p {
+  color: #444;
+}
+
+/* Navbar polish */
+.navbar-brand {
+  font-size: 1.25rem;
+}
+
+/* Footer polish */
+/* footer a { */
+  /* color: white; */
+/* } */
