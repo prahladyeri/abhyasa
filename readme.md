@@ -1,3 +1,9 @@
+![license](https://img.shields.io/github/license/prahladyeri/abhyasa.svg)
+![last-commit](https://img.shields.io/github/last-commit/prahladyeri/abhyasa.svg)
+[![patreon](https://img.shields.io/badge/Patreon-brown.svg?logo=patreon)](https://www.patreon.com/prahladyeri)
+[![paypal](https://img.shields.io/badge/PayPal-blue.svg?logo=paypal)](https://paypal.me/prahladyeri)
+[![follow](https://img.shields.io/twitter/follow/prahladyeri.svg?style=social)](https://x.com/prahladyeri)
+
 # Abhyasa
 
 **Abhyasa** is an open-source, modular quiz and assessment engine built as a minimal Single Page Application (SPA) using **esbuild**, **Bootstrap 5**, and an **event-driven architecture**. It is powered by the [Open Quiz Commons](https://github.com/prahladyeri/open-quiz-commons) dataset (CC-BY-SA-4.0), providing ready-to-use quiz questions.
