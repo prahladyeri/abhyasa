@@ -17,7 +17,6 @@ body {
   font-size: 1.25rem;
 }
 
-/* Footer polish */
-/* footer a { */
-  /* color: white; */
-/* } */
+#footer {
+  font-family: "cascadia code";
+}
