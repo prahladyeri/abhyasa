@@ -1,3 +1,9 @@
+/**
+* home.js
+* 
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
+* @license MIT
+*/
 export async function index() 
 {
 	$("#app").html(`

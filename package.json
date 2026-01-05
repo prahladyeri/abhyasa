@@ -4,10 +4,9 @@
   "description": "Open-source modular quiz and assessment engine",
   "private": true,
   "type": "module",
-  "main": "index.js",
   "scripts": {
 	"build": "node esbuild.config.js && cp -r public/* dist/",
-    "dev": "node esbuild.config.js --watch"
+	"serve": "npx serve dist"
   },
   "keywords": [],
   "author": "",

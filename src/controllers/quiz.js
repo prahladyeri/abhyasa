@@ -1,3 +1,9 @@
+/**
+* quiz.js
+* 
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
+* @license MIT
+*/
 async function saveTopic(topic, subtopic, data) {}
 
 async function getTopic(topic, subtopic) {}

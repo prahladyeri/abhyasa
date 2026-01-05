@@ -1,3 +1,9 @@
+/**
+* about.js
+* 
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
+* @license MIT
+*/
 import { VERSION, BUILD } from '../build.js';
 
 export function index() 

@@ -1,4 +1,10 @@
-import './app.css';
+/**
+* main.js
+* 
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
+* @license MIT
+*/
+import './css/app.css';
 
 const App = {db: null, topics: []};
 
