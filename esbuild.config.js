@@ -12,7 +12,7 @@ fs.writeFileSync('src/build.js', `
 esbuild.build({
   entryPoints: ['src/main.js'],
   bundle: true,
+  minify: true,
   outfile: 'dist/app.js',
-  sourcemap: false,
-  target: ['es2017'],
+  sourcemap: false
 });

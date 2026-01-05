@@ -6,34 +6,25 @@
 */
 import './css/app.css';
 
-const App = {db: null, topics: []};
 
+import { App } from './state.js';
 import * as home from "./controllers/home.js";
 import * as about from "./controllers/about.js";
 import * as quiz from "./controllers/quiz.js";
 import * as notFound from "./controllers/notFound.js";
 const controllers = {home, about, quiz, notFound};
 
-async function openDB() {
-  //TODO: you can replace this later with idb library if needed
-}
-
-async function saveCachedIndex(index) {
-	//TODO:
-}
-
 async function initData() {
-  const REMOTE_INDEX =
-    "https://prahladyeri.github.io/open-quiz-commons/index.json";
+  const REMOTE_INDEX = App.REMOTE_BASE + "index.json";
 	console.log("fetching index json");
 	// Fetch in background, update only if changed
 	fetch(REMOTE_INDEX, {method: 'GET', cache: 'default'})
 	.then(r => r.json())
 	.then(data => {
-		console.log("data received:", data);
+		//console.log("data received:", data);
 		App.topics = data.subjects;
 		console.log("App.topics:", App.topics);
-		saveCachedIndex(data.subjects);
+		//TODO: saveCachedIndex(data.subjects);
 		renderNavbar(); // re-render menus
 	})
 	.catch(error => {
@@ -112,34 +103,6 @@ function route(path) {
   controllers.notFound.index();
 }
 
-// const controllers = {
-  // home() {
-    // $("#app").html("<h1>Welcome to Abhyasa</h1>");
-  // },
-
-  // about() {
-    // $("#app").html("<h1>About Abhyasa</h1>");
-  // },
-
-  // async quiz({ topic, subtopic }) {
-    // $("#app").html("<p>Loading quiz…</p>");
-
-    // let data = await getTopic(topic, subtopic);
-
-    // if (!data) {
-      // data = await fetchQuizData(topic, subtopic);
-      // saveTopic(topic, subtopic, data);
-    // }
-
-    // renderQuiz(data);
-  // },
-
-  // notFound() {
-    // $("#app").html("<h1>404</h1>");
-  // },
-// };
-
-
 /* -----------------------------
    Navigation handling
 ------------------------------ */
@@ -158,14 +121,7 @@ window.addEventListener("popstate", () => {
    App bootstrap
 ------------------------------ */
 $(async function () {
-  await openDB();
+  //TODO: await openDB();
   await initData();
   route(location.pathname);
 });
-
-
-
-// document.getElementById('app').innerHTML = `
-  // <h1>Abhyasa</h1>
-  // <p>Build successful.</p>
-// `;
