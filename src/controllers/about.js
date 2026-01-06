@@ -8,8 +8,8 @@
 
 export function index() 
 {
-	$("#app").html(`<div style='font-size: 15px;'>
-	<pre >
+	$("#app").html(`<div>
+	<pre style='font-size: 15px;'>
 	<strong>ABOUT ABHYASA</strong>
 	
 	<strong>Version:</strong> ${process.env.VERSION}

@@ -7,6 +7,8 @@
 import { App, QuizState } from '../state.js';
 
 export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
+	//document.title = `${topicSlug} Quiz - Abhyasa`;
+	
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	
 	const subPath = subtopicSlug === 'main' ? '' : `${subtopicSlug}/`;

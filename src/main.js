@@ -14,22 +14,20 @@ import * as play from "./controllers/play.js";
 import * as notFound from "./controllers/notFound.js";
 const controllers = {home, about, quiz, play, notFound};
 
-async function initData() {
-  const REMOTE_INDEX = App.REMOTE_BASE + "index.json";
-	console.log("fetching index json");
-	// Fetch in background, update only if changed
-	fetch(REMOTE_INDEX, {method: 'GET', cache: 'default'})
-	.then(r => r.json())
-	.then(data => {
-		//console.log("data received:", data);
+async function initData() 
+{
+	try {
+		const REMOTE_INDEX = App.REMOTE_BASE + "index.json";
+		console.log("fetching index json");
+		// Fetch in background, update only if changed
+		const res = await fetch(REMOTE_INDEX, {method: 'GET', cache: 'default'});
+		const data = await res.json();
 		App.data = data.subjects;
-		console.log("App.data:", App.data);
-		//TODO: saveCachedIndex(data.subjects);
-		renderNavbar(); // re-render menus
-	})
-	.catch(error => {
-	  console.error('Fetch error:', error);
-	});
+		renderNavbar();
+	}
+	catch(err) {
+	  console.error('Fetch error:', err);
+	}
 }
 
 function renderNavbar() {

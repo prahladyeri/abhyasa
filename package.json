@@ -5,7 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-	"build": "node esbuild.config.js && cp -r public/* dist/",
+	"sitemap": "node generate-sitemap.js",
+	"build": "npm run sitemap && node esbuild.config.js && cp -r public/* dist/",
 	"start": "node esbuild.config.js --dev",
 	"serve": "node esbuild.config.js --dev && npx serve dist"
   },
