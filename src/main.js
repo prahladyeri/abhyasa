@@ -57,7 +57,7 @@ function renderNavbar() {
 		  <!-- Core topic -->
 		  <li>
 			<a class="dropdown-item"
-			   href="/quiz/${topic.slug}"
+			   href="/quiz/${topic.slug}/main"
 			   data-link><i class="fas fa-book"></i> 
 			  ${topic.name} (Core)
 			</a>
