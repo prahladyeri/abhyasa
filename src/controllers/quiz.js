@@ -13,7 +13,7 @@ export async function index({ topic, subtopic }) {
 	//if (subtopic) tname += ` / ${subtopic}`;
 	let html = ""; //`<label class='bold muted'>${tname}</label><br><br>`;
 	// fetch quiz data
-	const currentTopic = App.topics.find(tt => tt.slug === topic);
+	const currentTopic = App.data.find(tt => tt.slug === topic);
 	if (subtopic == 'main') {
 		modules = currentTopic.modules || [];
 	} else {

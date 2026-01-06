@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
 	"build": "node esbuild.config.js && cp -r public/* dist/",
-	"serve": "npx serve dist"
+	"start": "node esbuild.config.js --dev",
+	"serve": "node esbuild.config.js --dev && npx serve dist"
   },
   "keywords": [],
   "author": "",

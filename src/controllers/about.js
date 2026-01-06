@@ -4,7 +4,7 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import { VERSION, BUILD } from '../build.js';
+//import { VERSION, BUILD } from '../build.js';
 
 export function index() 
 {
@@ -12,8 +12,8 @@ export function index()
 	<pre >
 	<strong>ABOUT ABHYASA</strong>
 	
-	<strong>Version:</strong> ${VERSION}
-	<strong>Build:</strong> ${BUILD}
+	<strong>Version:</strong> ${process.env.VERSION}
+	<strong>Build:</strong> ${process.env.BUILD}
 	
 	<strong>Third party components used (Credits):<strong>
 	- <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a> · <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a> · <a href="https://fontawesome.com/icons/" target="_blank" rel="noopener">Font awesome</a>

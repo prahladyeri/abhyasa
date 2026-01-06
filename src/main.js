@@ -6,13 +6,13 @@
 */
 import './css/app.css';
 
-
 import { App } from './state.js';
 import * as home from "./controllers/home.js";
 import * as about from "./controllers/about.js";
 import * as quiz from "./controllers/quiz.js";
+import * as play from "./controllers/play.js";
 import * as notFound from "./controllers/notFound.js";
-const controllers = {home, about, quiz, notFound};
+const controllers = {home, about, quiz, play, notFound};
 
 async function initData() {
   const REMOTE_INDEX = App.REMOTE_BASE + "index.json";
@@ -22,8 +22,8 @@ async function initData() {
 	.then(r => r.json())
 	.then(data => {
 		//console.log("data received:", data);
-		App.topics = data.subjects;
-		console.log("App.topics:", App.topics);
+		App.data = data.subjects;
+		console.log("App.data:", App.data);
 		//TODO: saveCachedIndex(data.subjects);
 		renderNavbar(); // re-render menus
 	})
@@ -43,7 +43,7 @@ function renderNavbar() {
 	  </li-->
 	`;
 
-	App.topics.forEach(topic => {
+	App.data.forEach(topic => {
 	html += `
 	  <li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle"
@@ -59,7 +59,7 @@ function renderNavbar() {
 			<a class="dropdown-item"
 			   href="/quiz/${topic.slug}/main"
 			   data-link><i class="fas fa-book"></i> 
-			  ${topic.name} (Core)
+			  ${topic.name}
 			</a>
 		  </li>
 	`;
@@ -89,6 +89,7 @@ function renderNavbar() {
 
 
 function route(path) {
+	console.log("routing... path: ", path);
   const parts = path.split("/").filter(Boolean);
 
   if (parts.length === 0) return controllers.home.index();
@@ -99,6 +100,9 @@ function route(path) {
 	  case "quiz":
 		return controllers.quiz.index({topic: parts[1], subtopic: parts[2]});
 		break;
+	  case "play":
+		return controllers.play.index({topicSlug: parts[1], subtopicSlug: parts[2], moduleSlug: parts[3]});
+		break;
   }
   controllers.notFound.index();
 }
@@ -107,14 +111,14 @@ function route(path) {
    Navigation handling
 ------------------------------ */
 $(document).on("click", "a[data-link]", function (e) {
-  e.preventDefault();
-  const href = $(this).attr("href");
-  history.pushState({}, "", href);
-  route(location.pathname);
+	e.preventDefault();
+	const href = $(this).attr("href");
+	history.pushState({}, "", href);
+	route(location.pathname);
 });
 
 window.addEventListener("popstate", () => {
-  route(location.pathname);
+	route(location.pathname);
 });
 
 /* -----------------------------
