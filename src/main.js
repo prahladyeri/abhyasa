@@ -48,7 +48,7 @@ function renderNavbar() {
 		   href="#"
 		   role="button"
 		   data-bs-toggle="dropdown"
-		   aria-expanded="false"><i class="fas fa-book"></i> 
+		   aria-expanded="false"><i class="${(topic.icon ? topic.icon : "fas fa-book")}"></i> 
 		  ${topic.name}
 		</a>
 		<ul class="dropdown-menu">

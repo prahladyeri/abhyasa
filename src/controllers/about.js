@@ -15,7 +15,8 @@ export function index()
 	<strong>Version:</strong> ${process.env.VERSION}
 	<strong>Build:</strong> ${process.env.BUILD}
 	
-	<strong>Third party components used (Credits):<strong>
+	<strong>Components used (Credits):<strong>
+	- <a href="https://github.com/prahladyeri/open-quiz-commons/">Powered by Open Quiz Commons</a>
 	- <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a> · <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a> · <a href="https://fontawesome.com/icons/" target="_blank" rel="noopener">Font awesome</a>
 	- <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Pages</a> (Hosting)
 	

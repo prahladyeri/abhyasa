@@ -53,7 +53,7 @@ function renderQuiz(qadata) {
     const progress = Math.round(((QuizState.currentIndex) / questions.length) * 100);
 
     let html = `
-    <div class="container py-4">
+    <div class="container py-2 px-0">
         <div class="progress mb-4" style="height: 10px;">
             <div class="progress-bar bg-success" role="progressbar" style="width: ${progress}%"></div>
         </div>
@@ -118,6 +118,11 @@ function setupEvents(qadata) {
 
     $("#next-btn").click(() => {
         if (QuizState.currentIndex < questions.length - 1) {
+			if ($(".answer-btn.active").length == 0) // don't proceed unless answer selected
+			{
+				alert("Please select an answer before continuing.");
+				return;
+			}
             QuizState.currentIndex++;
             QuizState.save();
             renderQuiz(qadata);
