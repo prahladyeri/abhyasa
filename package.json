@@ -1,19 +1,22 @@
 {
   "name": "abhyasa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open-source modular quiz and assessment engine",
   "private": true,
   "type": "module",
   "scripts": {
-	"sitemap": "node generate-sitemap.js",
-	"build": "npm run sitemap && node esbuild.config.js && cp -r public/* dist/",
-	"dev": "node esbuild.config.js --dev",
-	"serve": "node esbuild.config.js --dev && npx serve dist"
+    "sitemap": "node generate-sitemap.js",
+    "build": "npm run sitemap && node esbuild.config.js && cp -r public/* dist/",
+    "dev": "node esbuild.config.js --dev",
+    "serve": "node esbuild.config.js --dev && npx serve dist"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "esbuild": "^0.27.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }

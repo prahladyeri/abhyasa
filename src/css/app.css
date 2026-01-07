@@ -5,9 +5,59 @@
 * @license MIT
 */ 
 
+/* :root { */
+  /* --bs-primary: #4a90e2;  */
+  /* --bs-secondary: #6c757d;  */
+/* } */
+
+/* :root, */
+/* [data-bs-theme="light"] { */
+  /* --bs-primary: #4a90e2; */
+  /* --bs-primary-rgb: 74, 144, 226; */
+
+  /* --bs-secondary: #6c757d; */
+  /* --bs-secondary-rgb: 108, 117, 125; */
+/* } */
+
+/* .card { */
+  /* border: none; */
+  /* box-shadow: 0 4px 8px rgba(0,0,0,.05); */
+/* } */
+
+/* * { */
+  /* transition: all 0.2s ease-in-out; */
+/* } */
+
+/* BS5 enhancements */
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus,
+.navbar .dropdown-menu .dropdown-item.active,
+.navbar .dropdown-menu .dropdown-item:active {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+/* Optional transition */
+/* .navbar .dropdown-item { */
+  /* transition: background-color 0.15s ease-in-out; */
+/* } */
+
+/* If you ever see a faint grey overlay, force it off: */
+/* .navbar .dropdown-item { */
+  /* background-image: none; */
+/* } */
+
+
+
+
 /* Typography */
 body {
-  font-family: Rubik, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-family: Inter, "Open Sans", Roboto, Rubik, Mulish, Lato, "Libre Baskerville", "Segoe UI";
+  /* background: linear-gradient(180deg, #f8f9fa, #e9ecef); */
+}
+
+pre {
+	font-family: 'cascadia code';
 }
 
 /* App content */

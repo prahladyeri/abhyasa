@@ -4,6 +4,7 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
+import './css/custom.css';
 import './css/app.css';
 
 import { App } from './state.js';
@@ -104,6 +105,13 @@ function route(path) {
   }
   controllers.notFound.index();
 }
+
+// dom events
+$("#themeToggle").on("click", function() {
+  const currentTheme = $("html").attr("data-bs-theme");
+  $("html").attr("data-bs-theme", currentTheme === "dark" ? "light" : "dark");
+});
+
 
 /* -----------------------------
    Navigation handling

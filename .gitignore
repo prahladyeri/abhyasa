@@ -1,4 +1,6 @@
 public/upi-*.png
+*.scss
+*.map
 
 # Node dependencies
 node_modules/

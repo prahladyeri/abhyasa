@@ -8,12 +8,8 @@
 
 export function index() 
 {
-	$("#app").html(`<div>
-	<pre style='font-size: 15px;'>
-	<strong>ABOUT ABHYASA</strong>
-	
-	<strong>Version:</strong> ${process.env.VERSION}
-	<strong>Build:</strong> ${process.env.BUILD}
+	$("#app").html(`<pre style='font-size: 15px;'>	<strong>ABOUT ABHYASA</strong>
+	<strong>Build:</strong> v${process.env.VERSION} - ${process.env.BUILD}
 	
 	<strong>Components used (Credits):<strong>
 	- <a href="https://github.com/prahladyeri/open-quiz-commons/">Powered by Open Quiz Commons</a>
@@ -26,7 +22,6 @@ export function index()
 	- Donate with UPI (scan QR code):
 	
 	<img src="./upi-axis.png" style='max-width:100px'>
-	</pre>
-	</div>
+	</pre>	
 	`);
 }
