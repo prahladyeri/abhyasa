@@ -3,11 +3,11 @@
 * 
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
-*/
+*/ 
 
 /* Typography */
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: Rubik, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 /* App content */

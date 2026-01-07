@@ -6,6 +6,17 @@
 */
 import { App, QuizState } from '../state.js';
 
+//TODO: move this to helper library
+function escapeHTML(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
 export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
 	//document.title = `${topicSlug} Quiz - Abhyasa`;
 	
@@ -53,7 +64,7 @@ function renderQuiz(qadata) {
                     <span class="badge bg-light text-dark border">Question ${QuizState.currentIndex + 1} / ${questions.length}</span>
                 </div>
                 
-                <h4 class="card-title mb-4 fw-bold">${currentQ.q}</h4>
+                <h4 class="card-title mb-4 fw-bold">${escapeHTML(currentQ.q)}</h4>
                 
                 <div class="list-group gap-2">
                     ${currentQ.o.map((option, index) => {
@@ -65,7 +76,7 @@ function renderQuiz(qadata) {
                             <button class="list-group-item list-group-item-action rounded border answer-btn ${isSelected ? 'active' : ''}" 
                                     data-index="${index}">
                                 <span class="me-3 fw-bold opacity-50">${label}.</span> 
-                                ${option}
+                                ${escapeHTML(option)}
                             </button>
                         `;
                     }).join('')}
