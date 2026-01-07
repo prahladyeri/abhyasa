@@ -26,7 +26,7 @@ export async function index({ topic, subtopic }) {
         <div class="container py-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/"><i class='fas fa-home'></i></a></li>
                     <li class="breadcrumb-item active text-capitalize">${topic}</li>
                     <li class="breadcrumb-item active text-capitalize">${subtopic}</li>
                 </ol>

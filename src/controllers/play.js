@@ -156,6 +156,7 @@ function processResults(questions) {
     QuizState.save();
 
     // 3. Render Results View
+	let keyParts = QuizState.quizKey.split('.');
     const percentage = Math.round((correct / questions.length) * 100);
     let feedbackColor = percentage >= 70 ? 'text-success' : 'text-danger';
     
@@ -189,7 +190,7 @@ function processResults(questions) {
                     <button class="btn btn-primary btn-lg" id="restart-btn">
                         <i class="fas fa-redo me-2"></i> Retake Quiz
                     </button>
-                    <a href="#/" class="btn btn-outline-secondary btn-lg" id="exit-btn">
+                    <a href="/quiz/${keyParts[0]}/${keyParts[1]}" class="btn btn-outline-secondary btn-lg" id="exit-btn">
                         <i class="fas fa-home me-2"></i> Exit to Home
                     </a>
                 </div>
