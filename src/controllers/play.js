@@ -12,12 +12,12 @@ import {escapeHTML, setTitle} from '../helpers.js';
 //import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
-export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
-	setTitle([topicSlug, subtopicSlug, moduleSlug]);
+export async function index(parsed) {
+	setTitle([parsed.tslug, parsed.stslug, parsed.mdslug]);
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	
-	const subPath = subtopicSlug === 'main' ? '' : `${subtopicSlug}/`;
-	const url = `${App.REMOTE_BASE}dataset/${topicSlug}/${subPath}${moduleSlug}.json`;
+	const subPath = parsed.stslug === 'main' ? '' : `${parsed.stslug}/`;
+	const url = `${App.REMOTE_BASE}dataset/${parsed.tslug}/${subPath}${parsed.mdslug}.json`;
 	let qadata;
 	try {
         const res = await fetch(url);
@@ -27,13 +27,13 @@ export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
         $("#app").html(`<div class="alert alert-danger">Error: ${err.message}</div>`);
         return;
     }	
-	const key = `${topicSlug}.${subtopicSlug}.${moduleSlug}`;
+	const key = `${parsed.tslug}.${parsed.stslug}.${parsed.mdslug}`;
 	if (localStorage.getItem(`quiz_progress_${key}`)) {
 		QuizState.load(key);
 		renderQuiz(qadata);
 		//TODO: In a later update, we can add a "Resume?" modal here
 	} else {
-		QuizState.init(topicSlug, subtopicSlug, moduleSlug);
+		QuizState.init(parsed.tslug, parsed.stslug, parsed.mdslug);
         renderQuiz(qadata);		
 	}
 }

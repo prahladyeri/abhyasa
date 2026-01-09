@@ -10,6 +10,7 @@ export const App = {
 	title: "Abhyasa",
 	db: null, 
 	data: [], // index data
+	current: null, // current page data (topic/sub/module)
 	REMOTE_BASE: "https://prahladyeri.github.io/open-quiz-commons/",
 	helpers: {
 		redirect,

@@ -8,18 +8,18 @@ import quizHtml from '../views/quiz.html';
 import { App } from '../state.js';
 import {setTitle} from '../helpers.js';
 
-export async function index({ topic, subtopic }) {
-	setTitle([topic, subtopic]);
+export async function index(parsed) {
+	setTitle([parsed.tname, parsed.stname]);
 	
 	$("#app").html(quizHtml);
 
-	const currentTopic = App.data.find(tt => tt.slug === topic);
+	const currentTopic = App.data.find(tt => tt.slug === parsed.tslug);
 	let modules;
 
-	if (subtopic === 'main') {
+	if (parsed.stslug === 'main') {
 		modules = currentTopic.modules;
 	} else {
-		const currentSub = currentTopic.subtopics?.find(st => st.slug === subtopic);
+		const currentSub = currentTopic.subtopics?.find(st => st.slug === parsed.stslug);
 		modules = currentSub ? currentSub.modules : [];			
 	}
 	
@@ -28,8 +28,8 @@ export async function index({ topic, subtopic }) {
 	}
 	
 	// Fill breadcrumb
-	$('#bc-topic').text(topic);
-	$('#bc-subtopic').text(subtopic);
+	$('#bc-topic').text(parsed.tname);
+	$('#bc-subtopic').text(parsed.stname);
 	
 	const list = document.getElementById('modules-list');
 	const tpl = document.getElementById('module-item');	
@@ -37,7 +37,7 @@ export async function index({ topic, subtopic }) {
 	modules.forEach(mm => {
 			const node = tpl.content.cloneNode(true);
 			const link = node.querySelector('a');
-			link.href = `/play/${topic}/${subtopic}/${mm.slug}`;
+			link.href = `/play/${parsed.tslug}/${parsed.stslug}/${mm.slug}`;
 			node.querySelector('.module-name').textContent = mm.name;
 			list.appendChild(node);
         });
