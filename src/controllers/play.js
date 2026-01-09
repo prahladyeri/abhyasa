@@ -13,7 +13,12 @@ import {escapeHTML, setTitle} from '../helpers.js';
 
 
 export async function index(parsed) {
-	setTitle([parsed.tslug, parsed.stslug, parsed.mdslug]);
+	setTitle(
+		parsed.tname === parsed.stname
+		  ? [parsed.tname, parsed.mdslug]
+		  : [parsed.tname, parsed.stname, parsed.mdname]
+	  );
+
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	
 	const subPath = parsed.stslug === 'main' ? '' : `${parsed.stslug}/`;

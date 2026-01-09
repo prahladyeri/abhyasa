@@ -1,6 +1,6 @@
 {
   "name": "abhyasa",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Open-source modular quiz and assessment engine",
   "private": true,
   "type": "module",

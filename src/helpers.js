@@ -12,7 +12,7 @@
 // services/titleService.js
 export function setTitle(parts = []) {
   const suffix = "Abhyasa";
-  document.title = [...parts, suffix].join(" / ");
+  document.title = [...parts, suffix].join(" — ");
 }
 
 export function escapeHTML(str) {

@@ -9,7 +9,11 @@ import { App } from '../state.js';
 import {setTitle} from '../helpers.js';
 
 export async function index(parsed) {
-	setTitle([parsed.tname, parsed.stname]);
+	setTitle(
+		parsed.tname === parsed.stname
+			? [parsed.tname]
+			: [parsed.tname, parsed.stname]
+		);
 	
 	$("#app").html(quizHtml);
 
