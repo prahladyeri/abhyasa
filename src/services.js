@@ -1,3 +1,9 @@
+/**
+* services.js
+* 
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
+* @license MIT
+*/
 import {App} from './state.js';
 
 export async function initData() 

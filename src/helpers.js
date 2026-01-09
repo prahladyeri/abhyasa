@@ -1,5 +1,5 @@
 /**
-* index.js
+* helpers.js
 * 
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
