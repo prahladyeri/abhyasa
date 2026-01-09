@@ -16,6 +16,41 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://abhyasa.pages.dev/quiz/python/database</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/sqlite_and_mysql</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/pgsql</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/sqlalchemy</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/raw_sql_cursors</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/migrations</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/database/transactions_isolations</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://abhyasa.pages.dev/play/python/main/core</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>

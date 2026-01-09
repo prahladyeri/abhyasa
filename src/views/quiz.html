@@ -1,0 +1,20 @@
+<div class="container py-4">
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '›';">
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="/"><i class='fas fa-home'></i></a></li>
+	<li class="breadcrumb-item active text-capitalize" id="bc-topic"></li>
+	<li class="breadcrumb-item active text-capitalize" id="bc-subtopic"></li>
+</ol>
+</nav>
+<h2 class="h4 mb-4 text-secondary border-bottom pb-2">Select a Module</h2>
+<div class="list-group shadow-sm" id="modules-list"></div>
+<template id="module-item">
+<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+  <div class="ms-2 me-auto">
+	<div class="fw-bold text-primary module-name"></div>
+	<small class="text-muted">Tap to start the challenge</small>
+  </div>
+  <i class="fas fa-chevron-right text-muted"></i>
+</a>
+</template>
+</div>

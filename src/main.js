@@ -4,36 +4,24 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import './css/custom.css';
+import './css/theme.css';
 import './css/app.css';
 
-import { App } from './state.js';
-import * as home from "./controllers/home.js";
-import * as about from "./controllers/about.js";
-import * as quiz from "./controllers/quiz.js";
-import * as play from "./controllers/play.js";
-import * as notFound from "./controllers/notFound.js";
-const controllers = {home, about, quiz, play, notFound};
+import $ from "jquery";
 
-async function initData() 
-{
-	try {
-		const REMOTE_INDEX = App.REMOTE_BASE + "index.json";
-		console.log("fetching index json");
-		// Fetch in background, update only if changed
-		const res = await fetch(REMOTE_INDEX, {method: 'GET', cache: 'default'});
-		const data = await res.json();
-		App.data = data.subjects;
-		renderNavbar();
-	}
-	catch(err) {
-	  console.error('Fetch error:', err);
-	}
-}
+// import 'bootstrap/js/dist/dropdown';
+// import 'bootstrap/js/dist/collapse';
+// import 'bootstrap/js/dist/modal';
+// import 'bootstrap/js/dist/tooltip';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
+import { route } from "./router.js";
+import { initData } from './services';
+import { App } from './state.js';
 
 function renderNavbar() {
-	const $nav = $("#navbar-menu");
-	$nav.empty();
+	document.querySelector("#navbar-menu").innerHTML = "";
 
 	let html = `
 	<ul class="navbar-nav">
@@ -43,35 +31,32 @@ function renderNavbar() {
 	`;
 
 	App.data.forEach(topic => {
+	let iconClass = (topic.icon ? topic.icon : "fas fa-book");
 	html += `
 	  <li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle"
 		   href="#"
 		   role="button"
 		   data-bs-toggle="dropdown"
-		   aria-expanded="false"><i class="${(topic.icon ? topic.icon : "fas fa-book")}"></i> 
-		  ${topic.name}
-		</a>
+		   aria-expanded="false"><i class="${iconClass}  fa-lg me-2"></i>${topic.name}</a>
 		<ul class="dropdown-menu">
 		  <!-- Core topic -->
 		  <li>
 			<a class="dropdown-item"
 			   href="/quiz/${topic.slug}/main"
-			   data-link><i class="fas fa-book"></i> 
-			  ${topic.name}
-			</a>
+			   data-link><i class="fas fa-book me-2"></i>${topic.name}</a>
 		  </li>
 	`;
 	// Non-core subtopics
 	(topic.subtopics || [])
 	  .forEach(st => {
+		if (st.modules.length == 0 || st.hidden) return;
+		  
 		html += `
 		  <li>
 			<a class="dropdown-item"
 			   href="/quiz/${topic.slug}/${st.slug}"
-			   data-link><i class="fas fa-book"></i> 
-			  ${topic.name} / ${st.name}
-			</a>
+			   data-link><i class="fas fa-book me-2"></i>${topic.name} › ${st.name}</a>
 		  </li>
 		`;
 	  });
@@ -83,28 +68,10 @@ function renderNavbar() {
 	});
 
 	html += `</ul>`;
-	$nav.html(html);
+	document.querySelector("#navbar-menu").innerHTML = html;
 }
 
 
-function route(path) {
-	console.log("routing... path: ", path);
-  const parts = path.split("/").filter(Boolean);
-
-  if (parts.length === 0) return controllers.home.index();
-  switch(parts[0]) {
-	  case "about":
-		return controllers.about.index();
-		break;
-	  case "quiz":
-		return controllers.quiz.index({topic: parts[1], subtopic: parts[2]});
-		break;
-	  case "play":
-		return controllers.play.index({topicSlug: parts[1], subtopicSlug: parts[2], moduleSlug: parts[3]});
-		break;
-  }
-  controllers.notFound.index();
-}
 
 // dom events
 $("#themeToggle").on("click", function() {
@@ -131,7 +98,11 @@ window.addEventListener("popstate", () => {
    App bootstrap
 ------------------------------ */
 $(async function () {
-  //TODO: await openDB();
-  await initData();
-  route(location.pathname);
+	console.log("initializing..");
+	await initData();
+	console.log("rendering navbar..");
+	renderNavbar();
+	// document.querySelectorAll('.nav-link.dropdown-toggle')
+		// .forEach(el => el.addEventListener('click', e => e.preventDefault()));
+	route(location.pathname);
 });

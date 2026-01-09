@@ -4,22 +4,12 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
+import $ from 'jquery';
 import { App, QuizState } from '../state.js';
-
-//TODO: move this to helper library
-function escapeHTML(str) {
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
+import {escapeHTML, setTitle} from '../helpers.js';
 
 export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
-	//document.title = `${topicSlug} Quiz - Abhyasa`;
-	
+	setTitle([topicSlug, subtopicSlug, moduleSlug]);
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	
 	const subPath = subtopicSlug === 'main' ? '' : `${subtopicSlug}/`;
@@ -161,25 +151,25 @@ function processResults(questions) {
     let feedbackColor = percentage >= 70 ? 'text-success' : 'text-danger';
     
     let html = `
-    <div class="container py-5 text-center">
+    <div class="container py-0 text-center">
         <div class="card shadow border-0 mx-auto" style="max-width: 500px;">
-            <div class="card-body p-5">
-                <i class="fas fa-poll-h fa-4x mb-4 text-primary opacity-25"></i>
+            <div class="card-body p-3">
+                <i class="fas fa-poll-h fa-4x mb-2 text-primary opacity-25"></i>
                 <h2 class="fw-bold mb-2">Quiz Complete!</h2>
-                <p class="text-muted mb-4">Here is how you performed:</p>
+                <p class="text-muted mb-2">Here is how you performed:</p>
                 
                 <div class="display-4 fw-bold ${feedbackColor} mb-2">${percentage}%</div>
-                <h5 class="mb-4 text-muted">${correct} out of ${questions.length} Correct</h5>
+                <h5 class="mb-2 text-muted">${correct} out of ${questions.length} Correct</h5>
 
                 <div class="row g-2 mb-4">
                     <div class="col-6">
-                        <div class="p-3 bg-light rounded border">
+                        <div class="p-2 bg-light rounded border">
                             <small class="d-block text-uppercase text-muted small fw-bold">Time Taken</small>
                             <span>${calculateDuration()}</span>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="p-3 bg-light rounded border">
+                        <div class="p-2 bg-light rounded border">
                             <small class="d-block text-uppercase text-muted small fw-bold">Status</small>
                             <span class="${feedbackColor} fw-bold">${percentage >= 70 ? 'Passed' : 'Keep Learning'}</span>
                         </div>

@@ -28,16 +28,6 @@
   /* transition: all 0.2s ease-in-out; */
 /* } */
 
-/* BS5 enhancements */
-.navbar .dropdown-menu .dropdown-item:hover,
-.navbar .dropdown-menu .dropdown-item:focus,
-.navbar .dropdown-menu .dropdown-item.active,
-.navbar .dropdown-menu .dropdown-item:active {
-  background-color: var(--bs-primary);
-  color: var(--bs-white);
-}
-
-
 /* Optional transition */
 /* .navbar .dropdown-item { */
   /* transition: background-color 0.15s ease-in-out; */
@@ -53,12 +43,18 @@
 
 /* Typography */
 body {
-  font-family: Inter, "Open Sans", Roboto, Rubik, Mulish, Lato, "Libre Baskerville", "Segoe UI";
+  font-family: Inter;
   /* background: linear-gradient(180deg, #f8f9fa, #e9ecef); */
+  /* font-size: 16px; */
+}
+
+nav.navbar {
+	font-family: Roboto;
 }
 
 pre {
 	font-family: 'cascadia code';
+	font-size: 16px;
 }
 
 /* App content */

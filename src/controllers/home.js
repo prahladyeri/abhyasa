@@ -4,8 +4,12 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
+import $ from 'jquery';
+import { setTitle} from '../helpers.js';
+
 export async function index() 
 {
+	setTitle(["Home", "Modular Quiz & Assessment Engine"]);
 	$("#app").html(`
 <div class="d-flex flex-column align-items-center text-center">
             <img src="./logo-sm.png" class="img-fluid mb-4" style="max-width: 190px; border-radius: 133px;" alt="Logo">

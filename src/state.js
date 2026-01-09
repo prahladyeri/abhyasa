@@ -4,10 +4,19 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
+import { redirect } from "./router.js";
+
 export const App = {
+	title: "Abhyasa",
 	db: null, 
 	data: [], // index data
-	REMOTE_BASE: "https://prahladyeri.github.io/open-quiz-commons/"
+	REMOTE_BASE: "https://prahladyeri.github.io/open-quiz-commons/",
+	helpers: {
+		redirect,
+		notFound() {
+		  redirect("/404", { replace: true });
+		}
+	}
 };
 
 export const QuizState = {

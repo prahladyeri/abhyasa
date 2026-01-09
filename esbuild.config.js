@@ -14,10 +14,11 @@ const isDev = process.argv.includes('--dev');
 const config = {
   entryPoints: ['src/main.js'],
   bundle: true,
-  minify: true,          // Don't minify in dev for easier debugging
-  sourcemap: false,        // Enable sourcemaps in dev
-  outfile: 'dist/app.js',
-  loader: { '.png': 'file', '.jpg': 'file', '.css': 'css' },
+  minify: true,
+  sourcemap: false,
+  legalComments: 'none',
+  outfile: `dist/app-${pkg.version}.js`,
+  loader: { '.png': 'file', '.jpg': 'file', '.css': 'css', '.html': 'text' },
   define: {
     'process.env.VERSION': JSON.stringify(pkg.version),
     'process.env.BUILD': JSON.stringify(new Date().toISOString()),
@@ -45,3 +46,8 @@ if (isDev) {
   await esbuild.build(config);
   console.log('✅ Build complete');
 }
+
+let html = fs.readFileSync('./public/index.html', 'utf8');
+html = html.replace('/app.js', `/app-${pkg.version}.js`);
+html = html.replace('/app.css', `/app-${pkg.version}.css`);
+fs.writeFileSync('./dist/index.html', html);
