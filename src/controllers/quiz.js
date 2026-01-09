@@ -24,7 +24,7 @@ export async function index({ topic, subtopic }) {
 	}
 	
 	if (!modules.length) {
-		return App.helpers.redirect("/not-found", { replace: true });		
+		return App.helpers.redirect("/not-found");
 	}
 	
 	// Fill breadcrumb

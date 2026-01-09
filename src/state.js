@@ -14,7 +14,7 @@ export const App = {
 	helpers: {
 		redirect,
 		notFound() {
-		  redirect("/404", { replace: true });
+		  redirect("/404");
 		}
 	}
 };

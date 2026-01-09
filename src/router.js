@@ -31,10 +31,17 @@ export function route(path) {
 	controllers.notFound.index();
 }
 
-export function redirect(path, { replace = false } = {}) {
-  replace
-    ? history.replaceState({}, "", path)
-    : history.pushState({}, "", path);
+// export function redirect(path, { replace = false } = {}) {
+// 	replace
+// 	  ? history.replaceState({}, "", path)
+// 	  : history.pushState({}, "", path);
 
-  route(path);
+export function redirect(path) {
+	history.replaceState({}, "", path);
+	route(path);
+}
+
+export function navigate(path) {
+	history.pushState({}, "", path);
+	route(path);
 }
