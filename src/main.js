@@ -11,12 +11,14 @@ import $ from "jquery";
 window.$ = $;
 window.jQuery = $;
 
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+window.bootstrap = bootstrap;
+
 // import 'bootstrap/dist/js/dropdown';
 // import 'bootstrap/dist/js/collapse';
 // import 'bootstrap/dist/js/modal';
 // import 'bootstrap/dist/js/tooltip';
 
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { route } from "./router.js";
 import { initData } from './services';

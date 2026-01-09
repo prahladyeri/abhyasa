@@ -10,8 +10,8 @@ import * as quiz from "./controllers/quiz.js";
 import * as play from "./controllers/play.js";
 import * as notFound from "./controllers/notFound.js";
 const controllers = {home, about, quiz, play, notFound};
-const title = "Abhyasa";
 
+//TODO: improve structure to make it dynamic, remove parameter dependencies
 export function route(path) {
 	console.log("routing... path: ", path);
 	const parts = path.split("/").filter(Boolean);

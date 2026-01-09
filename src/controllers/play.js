@@ -9,7 +9,7 @@ import resultHtml from '../views/playResult.html';
 import expModal from '../views/modals/explanation.html';
 import { App, QuizState } from '../state.js';
 import {escapeHTML, setTitle} from '../helpers.js';
-import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+//import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
