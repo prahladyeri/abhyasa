@@ -1,0 +1,41 @@
+<div class="container py-0 text-center">
+	<div class="card shadow border-0 mx-auto" style="max-width: 500px;">
+		<div class="card-body p-3">
+			<i class="fas fa-poll-h fa-4x mb-2 text-primary opacity-25"></i>
+			<h2 class="fw-bold mb-2">Quiz Complete!</h2>
+			<p class="text-muted mb-2">Here is how you performed:</p>
+			
+			<div class="display-4 fw-bold {{feedbackColor}} mb-2">{{percentage}}%</div>
+			<h5 class="mb-2 text-muted">{{correctCnt}} out of {{questionsCnt}} Correct</h5>
+
+			<div class="row g-2 mb-4">
+				<div class="col-6">
+					<div class="p-2 bg-light rounded border">
+						<small class="d-block text-uppercase text-muted small fw-bold">Time Taken</small>
+						<span>{{durationText}}</span>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="p-2 bg-light rounded border">
+						<small class="d-block text-uppercase text-muted small fw-bold">Status</small>
+						<span class="{{feedbackColor}} fw-bold">{{resultSlug}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex justify-content-center gap-2">
+			  <button class="btn btn-primary btn-lg" id="restart-btn">
+				<i class="fas fa-redo me-2"></i> Retake
+			  </button>
+
+			  <button class="btn btn-secondary btn-lg" id="explanation-btn">
+				<i class="fas fa-info-circle me-2"></i> Explanation
+			  </button>
+
+			  <a href="{{homeLink}}" class="btn btn-outline-secondary btn-lg" id="exit-btn">
+				<i class="fas fa-home me-2"></i> Home
+			  </a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -8,13 +8,15 @@ import './css/theme.css';
 import './css/app.css';
 
 import $ from "jquery";
+window.$ = $;
+window.jQuery = $;
 
-// import 'bootstrap/js/dist/dropdown';
-// import 'bootstrap/js/dist/collapse';
-// import 'bootstrap/js/dist/modal';
-// import 'bootstrap/js/dist/tooltip';
+// import 'bootstrap/dist/js/dropdown';
+// import 'bootstrap/dist/js/collapse';
+// import 'bootstrap/dist/js/modal';
+// import 'bootstrap/dist/js/tooltip';
+
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 
 import { route } from "./router.js";
 import { initData } from './services';

@@ -4,7 +4,6 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import $ from 'jquery';
 import { setTitle} from '../helpers.js';
 
 export async function index() 

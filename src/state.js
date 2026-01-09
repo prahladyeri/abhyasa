@@ -23,7 +23,7 @@ export const QuizState = {
 	// Identifiers (The "Key" for persistence)
 	quizKey: "",      // "python-flask-basics"
 	currentIndex: 0, // Progress tracking
-	answers: {},      // { 0: "a", 1: "c" } - index keyed to choice
+	answers: {},      // { 0: 1, 1: 2 } - index keyed to choice
 	score: 0, // can be computed on the fly from answers
 	// Metadata
 	status: "idle",   // idle, playing, completed

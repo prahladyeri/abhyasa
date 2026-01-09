@@ -4,9 +4,13 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import $ from 'jquery';
+import playHtml from '../views/play.html';
+import resultHtml from '../views/playResult.html';
+import expModal from '../views/modals/explanation.html';
 import { App, QuizState } from '../state.js';
 import {escapeHTML, setTitle} from '../helpers.js';
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 export async function index({ topicSlug, subtopicSlug, moduleSlug }) {
 	setTitle([topicSlug, subtopicSlug, moduleSlug]);
@@ -40,54 +44,26 @@ function renderQuiz(qadata) {
     const currentQ = questions[QuizState.currentIndex];
     
     // Calculate progress based on total questions in .data
-    const progress = Math.round(((QuizState.currentIndex) / questions.length) * 100);
+    const progress = Math.round(((QuizState.currentIndex ) / questions.length) * 100);
 
-    let html = `
-    <div class="container py-2 px-0">
-        <div class="progress mb-4" style="height: 10px;">
-            <div class="progress-bar bg-success" role="progressbar" style="width: ${progress}%"></div>
-        </div>
-
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="badge bg-light text-dark border">Question ${QuizState.currentIndex + 1} / ${questions.length}</span>
-                </div>
-                
-                <h4 class="card-title mb-4 fw-bold">${escapeHTML(currentQ.q)}</h4>
-                
-                <div class="list-group gap-2">
-                    ${currentQ.o.map((option, index) => {
-                        // Check if this option was previously selected
-                        const isSelected = QuizState.answers[QuizState.currentIndex] === index;
-                        const label = String.fromCharCode(65 + index); // Converts 0 to 'A', 1 to 'B', etc.
-                        
-                        return `
-                            <button class="list-group-item list-group-item-action rounded border answer-btn ${isSelected ? 'active' : ''}" 
-                                    data-index="${index}">
-                                <span class="me-3 fw-bold opacity-50">${label}.</span> 
-                                ${escapeHTML(option)}
-                            </button>
-                        `;
-                    }).join('')}
-                </div>
-            </div>
-            
-            <div class="card-footer bg-white border-top-0 p-4 pt-0 d-flex justify-content-between">
-                <button class="btn btn-outline-secondary btn-lg px-4" id="prev-btn" 
-                    ${QuizState.currentIndex === 0 ? 'disabled' : ''}>
-                    <i class="fas fa-arrow-left me-2"></i> Back
-                </button>
-                
-                <button class="btn btn-primary btn-lg px-4" id="next-btn">
-                    ${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'} 
-                    <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-            </div>
-        </div>
-    </div>`;
-
+    let html = playHtml
+		.replace('{{questionText}}', escapeHTML(currentQ.q))
+		.replace('{{questionIdx}}', `${QuizState.currentIndex + 1} / ${questions.length}`)
+		.replace('{{progressPer}}', progress)
+		.replace('{{nextLabel}}', `${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'}`)
+	;
     $("#app").html(html);
+	
+	$(".play-container").find('.list-group').empty();
+	const $list = $(".play-container").find('.list-group');
+	currentQ.o.forEach((option, index) => {
+		// Check if this option was previously selected
+		const isSelected = QuizState.answers[QuizState.currentIndex] === index;
+		const label = String.fromCharCode(65 + index); // Converts 0 to 'A', 1 to 'B', etc.
+		
+		$list.append(`<button class="list-group-item list-group-item-action rounded border answer-btn ${isSelected ? 'active' : ''}"  data-index="${index}"> <span class="me-3 fw-bold opacity-50">${label}.</span> ${escapeHTML(option)}</button>`);
+	});
+	
     setupEvents(qadata);
 }
 
@@ -117,8 +93,7 @@ function setupEvents(qadata) {
             QuizState.save();
             renderQuiz(qadata);
         } else {
-            // User reached the end
-            processResults(questions);
+            processResults(questions, qadata); // User reached the end
         }
     });
 
@@ -130,7 +105,7 @@ function setupEvents(qadata) {
     });
 }
 
-function processResults(questions) {
+function processResults(questions, qadata) {
     // 1. Calculate Score
     let correct = 0;
     questions.forEach((q, index) => {
@@ -150,46 +125,18 @@ function processResults(questions) {
     const percentage = Math.round((correct / questions.length) * 100);
     let feedbackColor = percentage >= 70 ? 'text-success' : 'text-danger';
     
-    let html = `
-    <div class="container py-0 text-center">
-        <div class="card shadow border-0 mx-auto" style="max-width: 500px;">
-            <div class="card-body p-3">
-                <i class="fas fa-poll-h fa-4x mb-2 text-primary opacity-25"></i>
-                <h2 class="fw-bold mb-2">Quiz Complete!</h2>
-                <p class="text-muted mb-2">Here is how you performed:</p>
-                
-                <div class="display-4 fw-bold ${feedbackColor} mb-2">${percentage}%</div>
-                <h5 class="mb-2 text-muted">${correct} out of ${questions.length} Correct</h5>
-
-                <div class="row g-2 mb-4">
-                    <div class="col-6">
-                        <div class="p-2 bg-light rounded border">
-                            <small class="d-block text-uppercase text-muted small fw-bold">Time Taken</small>
-                            <span>${calculateDuration()}</span>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="p-2 bg-light rounded border">
-                            <small class="d-block text-uppercase text-muted small fw-bold">Status</small>
-                            <span class="${feedbackColor} fw-bold">${percentage >= 70 ? 'Passed' : 'Keep Learning'}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary btn-lg" id="restart-btn">
-                        <i class="fas fa-redo me-2"></i> Retake Quiz
-                    </button>
-                    <a href="/quiz/${keyParts[0]}/${keyParts[1]}" class="btn btn-outline-secondary btn-lg" id="exit-btn">
-                        <i class="fas fa-home me-2"></i> Exit to Home
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>`;
+    let html = resultHtml
+	.replace("{{percentage}}", percentage)
+	.replace("{{resultSlug}}", (percentage >= 70 ? 'Passed' : 'Keep Learning'))
+	.replace("{{durationText}}", calculateDuration())
+	.replace("{{homeLink}}", `/quiz/${keyParts[0]}/${keyParts[1]}`)
+	.replace("{{feedbackColor}}", feedbackColor)
+	.replace("{{correctCnt}}", correct)
+	.replace("{{questionsCnt}}", questions.length)
+	;
 
     $("#app").html(html);
-    setupResultEvents();
+    setupResultEvents(qadata);
 }
 
 function calculateDuration() {
@@ -199,12 +146,55 @@ function calculateDuration() {
     return `${minutes}m ${seconds}s`;
 }
 
-function setupResultEvents() {
+function setupResultEvents(qadata) {
     $("#restart-btn").click(() => {
         const key = QuizState.quizKey; // Store it briefly
         QuizState.clear();             // Wipe storage
         location.reload();             // Simplest way to re-init the index() flow
     });
+	
+    $("#explanation-btn").click(() => {
+		const questions = qadata.data;
+		let $modal = $("#explanationModal");
+		
+		if ($modal.length === 0) { 
+			$modal = $(expModal);
+			$("body").append($modal); 
+			$modal = $("#explanationModal");
+		}	  
+	  
+		const container = $modal.find("#explanation-body")[0];
+		container.innerHTML = ""; // clear old content
+
+		questions.forEach((q, idx) => {
+			console.log("quizstate.answers[idx]: ", QuizState.answers[idx]);
+			const userAnswerIndex = QuizState.answers[idx]; // e.g. "a"
+			//console.log("user answer is: ", userAnswerLetter);
+			//const userAnswerIndex = userAnswerLetter ? userAnswerLetter.charCodeAt(0) - 65 : null;
+			const correctIndex = q.a;
+
+			const userAnswerText = userAnswerIndex !== null ? q.o[userAnswerIndex] : "(no answer)";
+			const correctAnswerText = q.o[correctIndex];
+
+			const block = document.createElement("div");
+			block.classList.add("mb-4");
+			const correctnessClass = userAnswerIndex === correctIndex ? "text-success" : "text-danger";
+
+			block.innerHTML = `
+			  <h6>Q${idx + 1}. ${q.q}</h6>
+			  <p><strong>Your answer:</strong>
+			  <span class="${correctnessClass}">${userAnswerText}</span></p>
+			  <p><strong>Correct answer:</strong> ${correctAnswerText}</p>
+			  <p class="text-muted"><em>${q.explanation || ""}</em></p>
+			  <hr>
+			`;
+
+			container.appendChild(block);
+		});
+		// Show the modal 
+		const modal = new bootstrap.Modal($modal[0]);
+		modal.show();	  
+    });	
 
     $("#exit-btn").click(() => {
         QuizState.clear();             // Optional: Clear if you don't want them resuming a finished quiz

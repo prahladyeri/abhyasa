@@ -4,7 +4,6 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import $ from 'jquery';
 import quizHtml from '../views/quiz.html';
 import { App } from '../state.js';
 import {setTitle} from '../helpers.js';

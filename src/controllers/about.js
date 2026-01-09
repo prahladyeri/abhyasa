@@ -5,7 +5,6 @@
 * @license MIT
 */
 //import { VERSION, BUILD } from '../build.js';
-import $ from 'jquery';
 import { version as bsVersion } from 'bootstrap/package.json';
 import aboutHtml from '../views/about.html';
 import {setTitle} from '../helpers.js';
