@@ -107,6 +107,7 @@ $(async function () {
 	// const renderer = new marked.Renderer();
 	// renderer.paragraph = text => text; // don’t wrap in <p>
 	// marked.setOptions({ renderer });
+
 	// const customRenderer = {
 	// 	paragraph(text) {
 	// 	  // Return the text wrapped in a <span> tag
@@ -117,6 +118,17 @@ $(async function () {
 	//   };	
 
 	// marked.use({ renderer: customRenderer });
+
+	// marked.use({
+	// 	renderer: { paragraph(text) { 
+	// 			// If text is an object, render it back to HTML 
+	// 			if (typeof text !== "string") {
+	// 					text = marked.parseInline(text); 
+	// 			} 
+	// 			return `<span>${text}</span>`; 
+	// 		}}
+	//   });
+	  
 
 	await initData();
 	console.log("rendering navbar..");

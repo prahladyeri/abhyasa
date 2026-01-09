@@ -47,7 +47,7 @@ function renderQuiz(qadata) {
     const progress = Math.round(((QuizState.currentIndex ) / questions.length) * 100);
 
     let html = playHtml
-		.replace('{{questionText}}', marked.parse(currentQ.q))
+		.replace('{{questionText}}', marked.parseInline(currentQ.q))
 		.replace('{{questionIdx}}', `${QuizState.currentIndex + 1} / ${questions.length}`)
 		.replace('{{progressPer}}', progress)
 		.replace('{{nextLabel}}', `${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'}`)
@@ -181,11 +181,11 @@ function setupResultEvents(qadata) {
 			const correctnessClass = userAnswerIndex === correctIndex ? "text-success" : "text-danger";
 
 			block.innerHTML = `
-			  <h6>Q${idx + 1}. ${q.q}</h6>
+			  <h6>Q${idx + 1}. ${marked.parseInline(q.q)}</h6>
 			  <p><strong>Your answer:</strong>
-			  <span class="${correctnessClass}">${userAnswerText}</span></p>
-			  <p><strong>Correct answer:</strong> ${correctAnswerText}</p>
-			  <p class="text-muted"><em>${q.explanation || ""}</em></p>
+			  <span class="${correctnessClass}">${marked.parseInline(userAnswerText)}</span></p>
+			  <p><strong>Correct answer:</strong> ${marked.parseInline(correctAnswerText)}</p>
+			  <p class="text-muted"><em>${marked.parseInline(q.explanation) || ""}</em></p>
 			  <hr>
 			`;
 
