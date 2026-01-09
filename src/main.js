@@ -103,6 +103,21 @@ window.addEventListener("popstate", () => {
 ------------------------------ */
 $(async function () {
 	console.log("initializing..");
+	
+	// const renderer = new marked.Renderer();
+	// renderer.paragraph = text => text; // don’t wrap in <p>
+	// marked.setOptions({ renderer });
+	// const customRenderer = {
+	// 	paragraph(text) {
+	// 	  // Return the text wrapped in a <span> tag
+	// 	  // You can also add classes or other attributes here if needed:
+	// 	  // return `<span class="my-paragraph-span">${text}</span>`;
+	// 	  return "<span>" + text + "</span>";
+	// 	}
+	//   };	
+
+	// marked.use({ renderer: customRenderer });
+
 	await initData();
 	console.log("rendering navbar..");
 	renderNavbar();

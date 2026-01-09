@@ -47,7 +47,7 @@ function renderQuiz(qadata) {
     const progress = Math.round(((QuizState.currentIndex ) / questions.length) * 100);
 
     let html = playHtml
-		.replace('{{questionText}}', escapeHTML(currentQ.q))
+		.replace('{{questionText}}', marked.parse(currentQ.q))
 		.replace('{{questionIdx}}', `${QuizState.currentIndex + 1} / ${questions.length}`)
 		.replace('{{progressPer}}', progress)
 		.replace('{{nextLabel}}', `${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'}`)
