@@ -4,7 +4,7 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import './css/theme.css';
+//import './css/theme.css';
 import './css/app.css';
 
 import $ from "jquery";
@@ -27,12 +27,7 @@ import { App } from './state.js';
 function renderNavbar() {
 	document.querySelector("#navbar-menu").innerHTML = "";
 
-	let html = `
-	<ul class="navbar-nav">
-	  <!--li class="nav-item">
-		<a class="nav-link" href="/" data-link><i class="fas fa-home"></i> Home</a>
-	  </li-->
-	`;
+	let html = ``;
 
 	App.data.forEach(topic => {
 	let iconClass = (topic.icon ? topic.icon : "fas fa-book");
@@ -71,7 +66,8 @@ function renderNavbar() {
 	`;
 	});
 
-	html += `</ul>`;
+	html += `<li class="nav-item ms-lg-auto">
+	<a class="nav-link" href="/about" data-link><i class="fas fa-info-circle fa-lg me-1"></i> About</a></li>`;
 	document.querySelector("#navbar-menu").innerHTML = html;
 }
 
@@ -104,32 +100,6 @@ window.addEventListener("popstate", () => {
 $(async function () {
 	console.log("initializing..");
 	
-	// const renderer = new marked.Renderer();
-	// renderer.paragraph = text => text; // don’t wrap in <p>
-	// marked.setOptions({ renderer });
-
-	// const customRenderer = {
-	// 	paragraph(text) {
-	// 	  // Return the text wrapped in a <span> tag
-	// 	  // You can also add classes or other attributes here if needed:
-	// 	  // return `<span class="my-paragraph-span">${text}</span>`;
-	// 	  return "<span>" + text + "</span>";
-	// 	}
-	//   };	
-
-	// marked.use({ renderer: customRenderer });
-
-	// marked.use({
-	// 	renderer: { paragraph(text) { 
-	// 			// If text is an object, render it back to HTML 
-	// 			if (typeof text !== "string") {
-	// 					text = marked.parseInline(text); 
-	// 			} 
-	// 			return `<span>${text}</span>`; 
-	// 		}}
-	//   });
-	  
-
 	await initData();
 	console.log("rendering navbar..");
 	renderNavbar();

@@ -50,12 +50,18 @@ function renderQuiz(qadata) {
     
     // Calculate progress based on total questions in .data
     const progress = Math.round(((QuizState.currentIndex ) / questions.length) * 100);
-
+	let qtext = marked.parseInline(currentQ.q);
+	if (currentQ.code) {
+		//qtext += `<code> <br><br>${currentQ.code.replaceAll("\n", "<br>")} </code>`
+		qtext += `<br><pre class="bg-dark text-light fw-normal p-3 rounded overflow-auto"><code>${currentQ.code}</code></pre>`;
+	}
+	//qtext = qtext);
     let html = playHtml
-		.replace('{{questionText}}', marked.parseInline(currentQ.q))
-		.replace('{{questionIdx}}', `${QuizState.currentIndex + 1} / ${questions.length}`)
-		.replace('{{progressPer}}', progress)
-		.replace('{{nextLabel}}', `${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'}`)
+		.replaceAll('{{questionText}}', qtext)
+		.replaceAll('{{questionIdx}}', `${QuizState.currentIndex + 1} / ${questions.length}`)
+		.replaceAll('{{progressPer}}', progress)
+		.replaceAll('{{backButtonDisabled}}', QuizState.currentIndex === 0 ? 'disabled' : '')
+		.replaceAll('{{nextLabel}}', `${QuizState.currentIndex === questions.length - 1 ? 'Finish' : 'Next'}`)
 	;
     $("#app").html(html);
 	

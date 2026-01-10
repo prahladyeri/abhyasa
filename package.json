@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "sitemap": "node generate-sitemap.js",
-    "theme": "sass --quiet --style=compressed src/css/theme.scss src/css/theme.css",
-	"clean": "rm -rf dist/* && cp -r public/* dist/",
-    "build": "npm run theme && npm run clean && node esbuild.config.js",
-    "dev": "npm run theme && npm run clean && node esbuild.config.js --dev"
+    "theme": "sass --quiet --style=compressed src/css/theme.scss public/themes/theme.css",
+	  "clean": "rm -rf dist/* && cp -r public/* dist/",
+    "build": "npm run clean && node esbuild.config.js",
+    "dev": "npm run clean && node esbuild.config.js --dev"
   },
   "keywords": [],
   "author": "",

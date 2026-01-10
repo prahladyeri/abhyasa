@@ -47,7 +47,8 @@ display=swap">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"/>
-<link rel="stylesheet" href="/app.css">
+<link id="theme-link" rel="stylesheet" href="/themes/theme.css?v={{pkgver}}">
+<link rel="stylesheet" href="/app-{{pkgver}}.css">
 <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
 <noscript>
   <div class="container text-center mt-5">
@@ -62,7 +63,7 @@ display=swap">
     <div class="container">
       <a class="navbar-brand" href="/" data-link><i class="fas fa-house-chimney me-2"></i></a>
 
-      <button class="navbar-toggler"
+      <button class="navbar-toggler ms-auto"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarContent"
@@ -73,18 +74,21 @@ display=swap">
       </button>
 
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-menu">
+        <ul class="navbar-nav mb-2 mb-lg-0 w-100" id="navbar-menu">
           <!-- renderNavbar() injects here -->
+
+          <!-- push right only on large screens -->
+          <!-- <li class="nav-item ms-lg-auto"> 
+            <a class="nav-link" href="/about" data-link>
+            <i class="fas fa-info-circle fa-lg me-2"></i>About
+            </a>
+          </li> -->
+      
         </ul>
       </div>
 	  
 		<!-- RIGHT: static links -->
-		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-		<li class="nav-item">
-		  <a class="nav-link" href="/about" data-link>
-			<i class="fas fa-info-circle fa-lg me-2"></i>About
-		  </a>
-		</li>
+		<ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
 		<!-- <li class="nav-item">  -->
 			<!-- <a href="javascript:" id="themeToggle" class="nav-link">  -->
 				<!-- <i class="fas fa-adjust fa-sm"></i> -->
@@ -104,8 +108,14 @@ display=swap">
 	</div>
 	</main>
 	
-	<footer id="footer" class="text-center p-1 bg-light text-muted border small" >© <a class='text-muted' href="https://prahladyeri.github.io/">Prahlad Yeri</a> 2026 · Open Source · MIT Licensed ·  <a href="https://github.com/prahladyeri/abhyasa/"><i class='fa-brands fa-github text-dark'></i></a></footer>
+	<footer id="footer" class="text-center p-1 bg-light text-muted border small" >© <a class='text-muted' href="https://prahladyeri.github.io/">Prahlad Yeri</a> 2026 · Open Source · MIT Licensed ·  <a href="https://github.com/prahladyeri/abhyasa/"><i class='fa-brands fa-github fa-lg text-dark'></i></a></footer>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-	<script src="/app.js"></script>
+	<script src="/app-{{pkgver}}.js"></script>
+  <script>
+    function setTheme(name) {
+      const link = document.getElementById('theme-link');
+      link.href = `/themes/theme-${name}.css?v=${Date.now()}`; 
+    }
+  </script>
 </body>
 </html>

@@ -47,7 +47,8 @@ if (isDev) {
   console.log('✅ Build complete');
 }
 
+//html = html.replace('/app.js', `/app-${pkg.version}.js`);
+//html = html.replace('/app.css', `/app-${pkg.version}.css`);
 let html = fs.readFileSync('./public/index.html', 'utf8');
-html = html.replace('/app.js', `/app-${pkg.version}.js`);
-html = html.replace('/app.css', `/app-${pkg.version}.css`);
+html = html.replaceAll('{{pkgver}}', `${pkg.version}`);
 fs.writeFileSync('./dist/index.html', html);
