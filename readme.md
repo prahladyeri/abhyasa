@@ -64,7 +64,7 @@ This will generate the `dist/` folder (build output).
 You can use any static server, e.g.:
 
 ```bash
-npx serve dist
+npm run dev
 ```
 
 Then open [http://localhost:5000](http://localhost:5000) to see the app.
