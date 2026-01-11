@@ -12,8 +12,6 @@ function generateSitemap() {
 
     // Map through your topics and modules
     AppData.subjects.forEach(topic => {
-        // Add Topic Main View
-        urls.push({ loc: `/quiz/${topic.slug}/main`, priority: '0.8' });
 
         // Add Subtopics
         if (topic.subtopics) {
@@ -27,12 +25,6 @@ function generateSitemap() {
             });
         }
 
-        // Add Modules directly under main topic
-        if (topic.modules) {
-            topic.modules.forEach(mod => {
-                urls.push({ loc: `/play/${topic.slug}/main/${mod.slug}`, priority: '0.6' });
-            });
-        }
     });
 
     // Build the XML string

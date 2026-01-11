@@ -6,19 +6,14 @@
 */
 //import './css/theme.css';
 import './css/app.css';
-
 import $ from "jquery";
+
 window.$ = $;
 window.jQuery = $;
+window.VERSION = process.env.VERSION;
 
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 window.bootstrap = bootstrap;
-
-// import 'bootstrap/dist/js/dropdown';
-// import 'bootstrap/dist/js/collapse';
-// import 'bootstrap/dist/js/modal';
-// import 'bootstrap/dist/js/tooltip';
-
 
 import { route } from "./router.js";
 import { initData } from './services';
@@ -40,13 +35,7 @@ function renderNavbar() {
 		   aria-expanded="false"><i class="${iconClass}  fa-lg me-2"></i>${topic.name}</a>
 		<ul class="dropdown-menu">
 		  <!-- Core topic -->
-		  <li>
-			<a class="dropdown-item"
-			   href="/quiz/${topic.slug}/main"
-			   data-link><i class="fas fa-book me-2"></i>${topic.name}</a>
-		  </li>
 	`;
-	// Non-core subtopics
 	(topic.subtopics || [])
 	  .forEach(st => {
 		if (st.modules.length == 0 || st.hidden) return;

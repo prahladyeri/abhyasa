@@ -43,14 +43,28 @@
 
 /* Typography */
 body {
-  font-family: Inter;
+  font-family: Roboto, Inter, "Segoe UI";
   /* background: linear-gradient(180deg, #f8f9fa, #e9ecef); */
   /* font-size: 16px; */
 }
 
 nav.navbar {
-	font-family: Roboto;
+	/* font-family: Roboto; */
 }
+
+.navbar-brand i {
+  transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.navbar-brand i:hover {
+  transform: rotate(-15deg); /* Tilt the icon */
+}
+
+.navbar-brand i:hover {
+  transform: rotate(-15deg) scale(1.1);
+}
+
+
 
 pre {
 	font-family: 'cascadia code';

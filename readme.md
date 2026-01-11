@@ -6,7 +6,7 @@
 
 # Abhyasa
 
-**Abhyasa** is an open-source, modular quiz and assessment engine built as a minimal Single Page Application (SPA) using **esbuild**, **Bootstrap 5**, and an **event-driven architecture**. It is powered by the [Open Quiz Commons](https://github.com/prahladyeri/open-quiz-commons) dataset (CC-BY-SA-4.0), providing ready-to-use quiz questions.
+**Abhyasa** is a modular quiz and assessment engine built as a minimal Single Page Application (SPA) using **esbuild**, **Bootstrap 5**, and an **event-driven architecture**. It is powered by the [Open Quiz Commons](https://github.com/prahladyeri/open-quiz-commons) dataset (CC-BY-SA-4.0), providing ready-to-use quiz questions.
 
 
 The project is designed for developers, educators, or anyone who wants a **clean, extensible foundation** for quizzes, MCQs, or learning tools.

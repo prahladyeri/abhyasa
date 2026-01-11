@@ -20,12 +20,8 @@ export async function index(parsed) {
 	const currentTopic = App.data.find(tt => tt.slug === parsed.tslug);
 	let modules;
 
-	if (parsed.stslug === 'main') {
-		modules = currentTopic.modules;
-	} else {
-		const currentSub = currentTopic.subtopics?.find(st => st.slug === parsed.stslug);
-		modules = currentSub ? currentSub.modules : [];			
-	}
+	const currentSub = currentTopic.subtopics?.find(st => st.slug === parsed.stslug);
+	modules = currentSub ? currentSub.modules : [];
 	
 	if (!modules.length) {
 		return App.helpers.redirect("/not-found");

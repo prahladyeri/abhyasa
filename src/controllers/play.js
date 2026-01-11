@@ -21,8 +21,7 @@ export async function index(parsed) {
 
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	
-	const subPath = parsed.stslug === 'main' ? '' : `${parsed.stslug}/`;
-	const url = `${App.REMOTE_BASE}dataset/${parsed.tslug}/${subPath}${parsed.mdslug}.json`;
+	const url = `${App.REMOTE_BASE}dataset/${parsed.tslug}/${parsed.stslug}/${parsed.mdslug}.json`;
 	let qadata;
 	try {
         const res = await fetch(url);

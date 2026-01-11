@@ -24,17 +24,12 @@ function parsePath(path) {
 	result.tslug = topic.slug;
 
 	let modules;
-	if (parts[2] == 'main') { // core subtopic
-		result.stname = topic.name;
-		result.stslug = 'main';
-		modules = topic.modules;
-	} else {
-		const st = topic.subtopics.find(st => st.slug == parts[2]);
-		if (!st) return result;
-		result.stname = st.name;
-		result.stslug = st.slug;
-		modules = st.modules;
-	}
+	const st = topic.subtopics.find(st => st.slug == parts[2]);
+	if (!st) return result;
+	result.stname = st.name;
+	result.stslug = st.slug;
+	modules = st.modules;
+	
 	if (parts[3]) {
 		const md = modules.find(mm => mm.slug == parts[3]);
 		if (!md) return result;

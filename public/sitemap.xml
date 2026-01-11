@@ -11,8 +11,63 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/quiz/python/main</loc>
-    <priority>0.8</priority>
+    <loc>https://abhyasa.pages.dev/quiz/python/core</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/basics</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/data_types_and_expressions</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/control_flow</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/functions</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/classes_and_oop</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/exceptions_and_errors</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/file_io</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/modules_and_packages</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/standard_library</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/iterators_and_generators</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/python/core/testing_and_debugging</loc>
+    <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -46,7 +101,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/database/transactions_and_isolations</loc>
+    <loc>https://abhyasa.pages.dev/play/python/database/transactions_and_isolation</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -251,63 +306,53 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/core</loc>
+    <loc>https://abhyasa.pages.dev/quiz/javascript/core</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/basics</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/data_types_and_expressions</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/data_types_and_operators</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/control_flow</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/control_flow</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/functions</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/functions_and_scope</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/classes_and_oop</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/objects_and_prototypes</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/exceptions_and_errors</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/arrays_and_collections</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/file_io</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/async_and_promises</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/modules_and_packages</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/errors_and_debugging</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/standard_library</loc>
+    <loc>https://abhyasa.pages.dev/play/javascript/core/es6_and_beyond</loc>
     <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/iterators_and_generators</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/python/main/testing_and_debugging</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/quiz/javascript/main</loc>
-    <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -422,51 +467,6 @@
   </url>
   <url>
     <loc>https://abhyasa.pages.dev/play/javascript/node/node_security</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/core</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/data_types_and_operators</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/control_flow</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/functions_and_scope</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/objects_and_prototypes</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/arrays_and_collections</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/async_and_promises</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/errors_and_debugging</loc>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://abhyasa.pages.dev/play/javascript/main/es6_and_beyond</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
