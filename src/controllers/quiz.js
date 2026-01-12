@@ -6,14 +6,9 @@
 */
 import quizHtml from '../views/quiz.html';
 import { App } from '../state.js';
-import {setTitle} from '../helpers.js';
 
 export async function index(parsed) {
-	setTitle(
-		parsed.tname === parsed.stname
-			? [parsed.tname]
-			: [parsed.tname, parsed.stname]
-		);
+	App.setTitle([parsed.tname, parsed.stname]);
 	
 	$("#app").html(quizHtml);
 

@@ -4,11 +4,11 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import { setTitle} from '../helpers.js';
+import {App} from '../state.js';
 
 export async function index() 
 {
-	setTitle(["Home", "Modular Quiz & Assessment Engine"]);
+	App.setTitle(["Home"]);
 	$("#app").html(`
 <div class="d-flex flex-column align-items-center text-center">
             <img src="/img/home.png" class="img-fluid mb-4" style="max-width: 250px; border-radius: 14px;" alt="Logo">

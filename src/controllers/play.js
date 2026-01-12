@@ -8,16 +8,12 @@ import playHtml from '../views/play.html';
 import resultHtml from '../views/playResult.html';
 import expModal from '../views/modals/explanation.html';
 import { App, QuizState } from '../state.js';
-import {escapeHTML, setTitle} from '../helpers.js';
+import {escapeHTML} from '../helpers.js';
 //import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 export async function index(parsed) {
-	setTitle(
-		parsed.tname === parsed.stname
-		  ? [parsed.tname, parsed.mdslug]
-		  : [parsed.tname, parsed.stname, parsed.mdname]
-	  );
+	App.setTitle([parsed.tname, parsed.stname, parsed.mdname]);
 
 	$("#app").html('<div class="text-center mt-5"><div class="spinner-border text-primary"></div></div>');
 	

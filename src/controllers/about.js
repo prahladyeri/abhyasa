@@ -7,13 +7,13 @@
 //import { VERSION, BUILD } from '../build.js';
 import { version as bsVersion } from 'bootstrap/package.json';
 import aboutHtml from '../views/about.html';
-import {setTitle} from '../helpers.js';
+import {App} from '../state.js';
 
 export function index() 
 {
-	setTitle(["About"]);
+	App.setTitle(["About"]);
 	const html = aboutHtml
-		.replace('{{BUILD}}', `v${process.env.VERSION}-${process.env.BUILD}`)
+		.replace('{{BUILD}}', `${process.env.BUILD}`)
 		.replace('{{BS_VERSION}}', `v${bsVersion}`);
 	$("#app").html(html);
 }

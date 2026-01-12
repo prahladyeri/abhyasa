@@ -12,11 +12,12 @@ export const App = {
 	data: [], // index data
 	current: null, // current page data (topic/sub/module)
 	REMOTE_BASE: "https://prahladyeri.github.io/open-quiz-commons/",
-	helpers: {
-		redirect,
-		notFound() {
-		  redirect("/404");
-		}
+	notFound: function() {
+		redirect("/404");
+	  },
+	setTitle: function(parts = []) {
+		const suffix = this.title;
+		document.title = [...parts, suffix].join(" — ");
 	}
 };
 

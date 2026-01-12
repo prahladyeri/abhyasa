@@ -8,8 +8,18 @@ import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
 import pkg from './package.json' assert { type: 'json' };
+import { toLocalTime } from './src/helpers.js';
 
 const isDev = process.argv.includes('--dev');
+// const now = new Date();
+// const datePart = now.toISOString().split('T')[0].replace(/-/g, ''); // 20260111
+// const timePart = now.getUTCHours().toString().padStart(2, '0') + 
+//                  now.getUTCMinutes().toString().padStart(2, '0');    // 1640
+// const buildId = `${pkg.version}-${datePart}-${timePart}`;           
+const dtmap = toLocalTime(new Date());
+const datePart = `${dtmap.year}${dtmap.month}${dtmap.day}`;
+const timePart = `${dtmap.hour}${dtmap.minute}`;
+const buildId = `${pkg.version}-${datePart}-${timePart}`;
 
 const config = {
   entryPoints: ['src/main.js'],
@@ -21,7 +31,7 @@ const config = {
   loader: { '.png': 'file', '.jpg': 'file', '.css': 'css', '.html': 'text' },
   define: {
     'process.env.VERSION': JSON.stringify(pkg.version),
-    'process.env.BUILD': JSON.stringify(new Date().toISOString()),
+    'process.env.BUILD': JSON.stringify(buildId),
   },
 };
 
