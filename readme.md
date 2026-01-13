@@ -67,7 +67,7 @@ You can use any static server, e.g.:
 npm run dev
 ```
 
-Then open [http://localhost:5000](http://localhost:3000) to see the app.
+Then open `http://localhost:3000` to see the app.
 
 ---
 
