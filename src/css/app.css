@@ -39,6 +39,17 @@
 /* } */
 
 
+/*:root[data-theme="app"] {
+  --bs-border-radius: .25rem;
+  --bs-border-radius-sm: .2rem;
+  --bs-border-radius-lg: .3rem;
+}*/
+
+:root .btn {
+  --bs-btn-padding-y: .375rem;
+  --bs-btn-padding-x: .75rem;
+  --bs-btn-border-radius: .25rem;
+}
 
 
 /* Typography */
