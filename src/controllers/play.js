@@ -30,8 +30,11 @@ export async function index(parsed) {
 	const key = `${parsed.tslug}.${parsed.stslug}.${parsed.mdslug}`;
 	if (localStorage.getItem(`quiz_progress_${key}`)) {
 		QuizState.load(key);
-		renderQuiz(qadata);
-		//TODO: In a later update, we can add a "Resume?" modal here
+		if (QuizState.status === "completed") {
+			processResults(qadata.data, qadata);
+		} else {
+			renderQuiz(qadata);
+		}
 	} else {
 		QuizState.init(parsed.tslug, parsed.stslug, parsed.mdslug);
         renderQuiz(qadata);		
@@ -122,9 +125,12 @@ function processResults(questions, qadata) {
 
     // 2. Update Final State
     QuizState.score = correct;
-    QuizState.status = "completed";
-    QuizState.endTime = Date.now();
-    QuizState.save();
+	if (QuizState.status !== "completed") 
+	{
+		QuizState.status = "completed";
+		QuizState.endTime = Date.now();
+		QuizState.save();
+	}
 
     // 3. Render Results View
 	let keyParts = QuizState.quizKey.split('.');
