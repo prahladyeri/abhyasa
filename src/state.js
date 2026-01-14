@@ -4,17 +4,12 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-import { redirect } from "./router.js";
-
 export const App = {
 	title: "Abhyasa",
 	db: null, 
 	data: [], // index data
 	current: null, // current page data (topic/sub/module)
 	REMOTE_BASE: "https://prahladyeri.github.io/open-quiz-commons/",
-	notFound: function() {
-		redirect("/404");
-	  },
 	setTitle: function(parts = []) {
 		const suffix = this.title;
 		document.title = [...parts, suffix].join(" — ");
