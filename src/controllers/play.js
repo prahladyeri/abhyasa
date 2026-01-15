@@ -197,7 +197,7 @@ function setupResultEvents(qadata) {
 			  <p><strong>Your answer:</strong>
 			  <span class="${correctnessClass}">${marked.parseInline(userAnswerText)}</span></p>
 			  <p><strong>Correct answer:</strong> ${marked.parseInline(correctAnswerText)}</p>
-			  <p class="text-muted"><em>${marked.parseInline(q.explanation) || ""}</em></p>
+			  <p class="text-muted"><em>${marked.parseInline(q.e) || ""}</em></p>
 			  <hr>
 			`;
 
