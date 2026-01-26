@@ -25,6 +25,7 @@ function renderNavbar() {
 	let html = ``;
 
 	App.data.forEach(topic => {
+		if (topic.subtopics.length == 0 || topic.hidden) return;
 	let iconClass = (topic.icon ? topic.icon : "fas fa-book");
 	html += `
 	  <li class="nav-item dropdown">
