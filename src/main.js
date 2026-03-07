@@ -45,7 +45,7 @@ function renderNavbar() {
 		  <li>
 			<a class="dropdown-item"
 			   href="/quiz/${topic.slug}/${st.slug}"
-			   data-link><i class="fas fa-book me-2"></i>${topic.name} › ${st.name}</a>
+			   data-link><i class="fas fa-book me-2"></i>${st.name}</a>
 		  </li>
 		`;
 	  });
