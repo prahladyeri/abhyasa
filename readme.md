@@ -97,11 +97,4 @@ All questions included in this app are attributed to their original authors as p
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
-## About the Author
-
-**Prahlad Yeri** – Full-stack developer & freelancer.
-Abhyasa is part of my open-source portfolio showcasing **clean architecture and modular SPA design**.
-
-[GitHub](https://github.com/prahladyeri) | [Portfolio](https://prahladyeri.github.io)
+However, if you need custom features, professional deployment on Cloudflare, or a bespoke version for your business, you can hire me on [Fiverr](https://www.fiverr.com/prahladyeri).
