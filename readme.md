@@ -11,8 +11,6 @@
 
 The project is designed for developers, educators, or anyone who wants a **clean, extensible foundation** for quizzes, MCQs, or learning tools.
 
-[Live Demo](https://abhyasa.pages.dev/)
-
 ---
 
 ## Features
