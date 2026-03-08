@@ -97,4 +97,13 @@ All questions included in this app are attributed to their original authors as p
 
 This project is licensed under the [MIT License](LICENSE).
 
-However, if you need custom features, professional deployment on Cloudflare, or a bespoke version for your business, you can hire me on [Fiverr](https://www.fiverr.com/prahladyeri).
+## 🛠️ Professional Services & Customization
+
+While **Abhyasa** is strictly open-source, I understand that businesses often require specific integrations or bespoke features. As a full-stack developer, I offer the following services via **Fiverr**:
+
+* **Custom Feature Development:** Need a specific question type, advanced reporting, or a unique UI/UX for your assessment needs?
+* **Cloudflare Deployment:** Professional setup and optimization of Abhyasa on your own Cloudflare Workers/Pages environment.
+* **API Integration:** Connecting the quiz engine to your existing CRM, LMS, or database.
+* **Legacy-to-Modern Migration:** Expertise in porting older .NET or desktop workflows into modern React/Vite stacks.
+
+**[Hire me on Fiverr](https://www.fiverr.com/prahladyeri)**
