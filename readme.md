@@ -97,7 +97,7 @@ All questions included in this app are attributed to their original authors as p
 
 This project is licensed under the [MIT License](LICENSE).
 
-## 🛠️ Professional Services & Customization
+## Professional Services & Customization
 
 While **Abhyasa** is strictly open-source, I understand that businesses often require specific integrations or bespoke features. As a full-stack developer, I offer the following services via **Fiverr**:
 
