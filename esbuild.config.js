@@ -7,19 +7,26 @@
 import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 import { toLocalTime } from './src/helpers.js';
 
 const isDev = process.argv.includes('--dev');
-// const now = new Date();
-// const datePart = now.toISOString().split('T')[0].replace(/-/g, ''); // 20260111
-// const timePart = now.getUTCHours().toString().padStart(2, '0') + 
-//                  now.getUTCMinutes().toString().padStart(2, '0');    // 1640
-// const buildId = `${pkg.version}-${datePart}-${timePart}`;           
 const dtmap = toLocalTime(new Date());
 const datePart = `${dtmap.year}${dtmap.month}${dtmap.day}`;
 const timePart = `${dtmap.hour}${dtmap.minute}`;
 const buildId = `${pkg.version}-${datePart}-${timePart}`;
+
+// Read the .env file manually (no 'dotenv' package required)
+let bingToken = '';
+if (fs.existsSync('.env')) {
+	const envContent = fs.readFileSync('.env', 'utf8');
+	const match = envContent.match(/BING_VERIFY_TOKEN=(.*)/);
+	bingToken = match ? match[1].trim() : '';
+	// Remove surrounding quotes if they exist in the .env file
+	bingToken = bingToken.replace(/^["']|["']$/g, ''); 
+} else {
+	console.warn('⚠️ .env file not found. Bing token will be empty.');
+}
 
 const config = {
   entryPoints: ['src/main.js'],
@@ -61,4 +68,5 @@ if (isDev) {
 //html = html.replace('/app.css', `/app-${pkg.version}.css`);
 let html = fs.readFileSync('./public/index.html', 'utf8');
 html = html.replaceAll('{{pkgver}}', `${pkg.version}`);
+html = html.replaceAll('{{bingToken}}', `${bingToken}`);
 fs.writeFileSync('./dist/index.html', html);
